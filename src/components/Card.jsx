@@ -38,7 +38,7 @@ function Card(props) {
         {/* Course Category */}
         {!getcat ? (
           <p className="font-urbanist text-red-500 text-2xl font-semibold">
-            {course?.category_id.category_name} hallo
+            {course?.category_id.category_name}
           </p>
         ) : (
           <p className="font-urbanist text-red-500 text-2xl font-semibold">
