@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .Bannerheadertxt {
+    @apply md:text-[80px] text-[30px] font-extralight font-urbanist text-center md:text-start;
+  }
+
+  .Bannertxt {
+    @apply font-urbanist font-semibold leading-8 text-center md:text-start;
+  }
+
+  .sectionHeader {
+    @apply font-poppins text-[35px]  font-semibold md:text-[55px];
+  }
+
+  .SectionDesc {
+    @apply font-urbanist text-justify leading-loose text-lg;
+  }
+
+  .headerbtn {
+    @apply hover:text-[#fd5252] duration-500 text-lg  md:text-xl;
+  }
+
+  
+  .CourseCardTitle {
+    @apply font-poppins text-3xl;
+  }
+
+  .CourseCardDescription {
+    @apply font-urbanist py-2 leading-relaxed text-lg;
+  }
+
+  .CourseDescription {
+    @apply font-urbanist  text-xl;
+  }
+
+  .ContentHeading {
+    @apply font-semibold text-2xl;
+  }
+}
