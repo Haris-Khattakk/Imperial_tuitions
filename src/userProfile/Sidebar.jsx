@@ -1,67 +1,89 @@
-import React, { useState } from "react";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  NavLink,
+} from "react-router-dom";
+import Home from "./home/Home";
+import Courses from "./courses/Courses";
+import About from "./about_us/About";
+import Messeges from "./messeges/Messeges";
+import Contact_us from "./contact/Contact_us";
 
 const Sidebar = () => {
-  const [activeMenu, setActiveMenu] = useState(null);
-
-  // Function to toggle menus
-  const toggleMenu = (menu) => {
-    setActiveMenu(activeMenu === menu ? null : menu);
-  };
-
   return (
-    <div className="flex h-screen">
-      {/* Sidebar */}
-      <div className="w-1/4 bg-gray-800 text-white p-4">
-        <h2 className="text-xl font-bold mb-4">Sidebar</h2>
-        <div className="space-y-4">
-          <button
-            className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-600 rounded"
-            onClick={() => toggleMenu("menu1")}
-          >
-            Open Menu 1
-          </button>
-          <button
-            className="w-full py-2 px-4 bg-green-500 hover:bg-green-600 rounded"
-            onClick={() => toggleMenu("menu2")}
-          >
-            Open Menu 2
-          </button>
-          <button
-            className="w-full py-2 px-4 bg-red-500 hover:bg-red-600 rounded"
-            onClick={() => toggleMenu("menu3")}
-          >
-            Open Menu 3
-          </button>
+    <Router>
+      <div className="flex h-screen">
+        {/* Sidebar */}
+        <div className="w-1/5 bg-gray-800 text-white p-4">
+          <h2 className="text-xl font-bold mb-4">Sidebar</h2>
+          <nav className="space-y-4">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `block py-2 px-4 rounded ${
+                  isActive ? "bg-blue-600" : "hover:bg-blue-500"
+                }`
+              }
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/courses"
+              className={({ isActive }) =>
+                `block py-2 px-4 rounded ${
+                  isActive ? "bg-blue-600" : "hover:bg-blue-500"
+                }`
+              }
+            >
+              Courses
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `block py-2 px-4 rounded ${
+                  isActive ? "bg-blue-600" : "hover:bg-blue-500"
+                }`
+              }
+            >
+              About Us
+            </NavLink>
+            <NavLink
+              to="/messeges"
+              className={({ isActive }) =>
+                `block py-2 px-4 rounded ${
+                  isActive ? "bg-blue-600" : "hover:bg-blue-500"
+                }`
+              }
+            >
+              Messages
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `block py-2 px-4 rounded ${
+                  isActive ? "bg-blue-600" : "hover:bg-blue-500"
+                }`
+              }
+            >
+              Contact Us
+            </NavLink>
+          </nav>
+        </div>
+
+        {/* Main Content */}
+        <div className="flex-1 p-6 bg-gray-100">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/messeges" element={<Messeges />} />
+            <Route path="/contact" element={<Contact_us />} />
+          </Routes>
         </div>
       </div>
-
-      {/* Main Content */}
-      <div className="flex-1 p-6 bg-gray-100">
-        {activeMenu === "menu1" && (
-          <div className="bg-white shadow-md p-4 rounded">
-            <h3 className="text-lg font-bold mb-2">Menu 1</h3>
-            <p>This is the content for Menu 1.</p>
-          </div>
-        )}
-        {activeMenu === "menu2" && (
-          <div className="bg-white shadow-md p-4 rounded">
-            <h3 className="text-lg font-bold mb-2">Menu 2</h3>
-            <p>This is the content for Menu 2.</p>
-          </div>
-        )}
-        {activeMenu === "menu3" && (
-          <div className="bg-white shadow-md p-4 rounded">
-            <h3 className="text-lg font-bold mb-2">Menu 3</h3>
-            <p>This is the content for Menu 3.</p>
-          </div>
-        )}
-        {!activeMenu && (
-          <p className="text-gray-500">
-            Select a menu from the sidebar to view content.
-          </p>
-        )}
-      </div>
-    </div>
+    </Router>
   );
 };
 

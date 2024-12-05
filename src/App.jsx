@@ -11,7 +11,7 @@ const Index = React.lazy(() => import("./pages/Index"));
 const CoursesPage = React.lazy(() => import("./pages/Courses/CoursesPage"));
 const CourseDescription = React.lazy(() =>
   import("./components/CourseDescription")
-);
+); 
 const Enrollment = React.lazy(() => import("./components/Enrollment"));
 const Inquiry = React.lazy(() => import("./components/Inquiry"));
 const SignIn = React.lazy(() => import("./pages/Authentication/SignIn"));
