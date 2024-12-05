@@ -10,6 +10,12 @@ import API_URLS from "../../../config/Config";
 import IMAGES from "../../../public/ImagesConfig";
 
 const Header = () => {
+
+  const [menu, setMenu] = useState(false);
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
+
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [btns, setBtns] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -43,13 +49,17 @@ const Header = () => {
     const res = await axios.get(API_URLS.Check_Session, {
       withCredentials: true,
     });
-    const expiration = res.data.exp;
+    // console.log(res.data)
+    const expiration = res.data.decoded.exp;
 
     const expiryDate = new Date(expiration * 1000);
     const currentDate = new Date();
 
     if (currentDate < expiryDate) {
       setBtns(true);
+      // set username and email in menu
+      setName(res.data.user.student_name);
+      setEmail(res.data.user.email);
     } else {
       setBtns(false);
     }
@@ -68,6 +78,11 @@ const Header = () => {
   useEffect(() => {
     checkSession();
   }, [location.pathname]);
+
+
+  const handleView = ()=>{
+    setMenu(!menu)
+  }
 
   return (
     <nav className="flex flex-row w-full bg-bodyColor/80 h-auto justify-between md:px-16 md:py-7 px-4 py-4">
@@ -202,12 +217,29 @@ const Header = () => {
             </NavLink>
           </>
         ) : (
-          <button
-            onClick={() => setShowLogoutModal(true)} // Open modal on logout click
-            className="hover:text-[#427E41] duration-500 rounded-md text-white bg-black px-5 py-2"
-          >
-            Logout
-          </button>
+          <div>
+          <p className="font-bold cursor-pointer" onClick={handleView}>Menu button</p>
+            {
+              menu && (
+                <div className="bg-red-300 absolute h-1/2 w-1/6 right-[2rem] top-[5rem] flex flex-col items-center justify-between py-2">
+                  <div className="pic bg-red-800 w-1/2 h-1/3 rounded-full"></div>
+                  <div className="email text-black">{name && name}</div>
+                  <div className="name text-black">{email && email}</div>
+                  <button
+                   
+                    className="hover:text-[#427E41] duration-500 rounded-md text-white bg-black px-5 py-2"
+                    >
+                      Profile
+                  </button>
+                  <button
+                    onClick={() => setShowLogoutModal(true)} // Open modal on logout click
+                    className="hover:text-[#427E41] duration-500 rounded-md text-white bg-black px-5 py-2"
+                    >
+                      Logout
+                  </button>
+                </div> )
+            }
+          </div>
         )}
       </div>
 
