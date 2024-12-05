@@ -1,6 +1,6 @@
 import React from "react";
 
 const Contact_us = () => {
-  return <div>Contact_us</div>;
+  return <div className=" w-full  bg-blue-400 ">Contact_us</div>;
 };
 export default Contact_us;

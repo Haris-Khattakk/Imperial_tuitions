@@ -21,7 +21,7 @@ function Card(props) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  return (
+  return ( 
     <>
       <div
         key={course._id}

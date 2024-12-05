@@ -8,13 +8,13 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import API_URLS from "../../../config/Config";
 import IMAGES from "../../../public/ImagesConfig";
+import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
-
   const [menu, setMenu] = useState(false);
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState("")
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
 
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [btns, setBtns] = useState(false);
@@ -79,10 +79,9 @@ const Header = () => {
     checkSession();
   }, [location.pathname]);
 
-
-  const handleView = ()=>{
-    setMenu(!menu)
-  }
+  const handleView = () => {
+    setMenu(!menu);
+  };
 
   return (
     <nav className="flex flex-row w-full bg-bodyColor/80 h-auto justify-between md:px-16 md:py-7 px-4 py-4">
@@ -218,27 +217,45 @@ const Header = () => {
           </>
         ) : (
           <div>
-          <p className="font-bold cursor-pointer" onClick={handleView}>Menu button</p>
-            {
-              menu && (
-                <div className="bg-red-300 absolute h-1/2 w-1/6 right-[2rem] top-[5rem] flex flex-col items-center justify-between py-2">
-                  <div className="pic bg-red-800 w-1/2 h-1/3 rounded-full"></div>
-                  <div className="email text-black">{name && name}</div>
-                  <div className="name text-black">{email && email}</div>
-                  <button
-                   
-                    className="hover:text-[#427E41] duration-500 rounded-md text-white bg-black px-5 py-2"
-                    >
-                      Profile
-                  </button>
-                  <button
-                    onClick={() => setShowLogoutModal(true)} // Open modal on logout click
-                    className="hover:text-[#427E41] duration-500 rounded-md text-white bg-black px-5 py-2"
-                    >
-                      Logout
-                  </button>
-                </div> )
-            }
+            <p
+              className="font-bold text-[30px] cursor-pointer"
+              onClick={handleView}
+            >
+              <CgProfile
+                className={`${menu ? "text-red-500 " : " text-black"}`}
+              />
+            </p>
+            {menu && (
+              <div className="bg-white shadow-lg absolute h-auto w-64 right-8 top-20 flex flex-col items-center justify-between py-6 px-4 rounded-lg border border-gray-200">
+                {/* Profile Picture */}
+                <div className="pic bg-gray-300 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                  <span className="text-gray-500 text-sm">Your Pic</span>
+                </div>
+
+                {/* User Information */}
+                <div className="email text-gray-700 text-sm font-medium mb-1">
+                  {email || "No Email"}
+                </div>
+                <div className="name text-gray-900 text-lg font-semibold mb-4">
+                  {name || "Guest User"}
+                </div>
+
+                {/* Buttons */}
+                  <NavLink
+                    onClick={handleView}
+                  to="/profile"
+                  className="w-full text-center hover:bg-gray-100 text-gray-700 border border-gray-300 py-2 rounded-md mb-2 transition duration-300"
+                >
+                  View Profile
+                </NavLink>
+                <button
+                  onClick={() => setShowLogoutModal(true)} // Open modal on logout click
+                  className="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded-md transition duration-300"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>
