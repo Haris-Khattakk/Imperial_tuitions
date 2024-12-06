@@ -116,9 +116,9 @@ function Enrollment() {
     const currentDate = new Date();
 
     if (currentDate < expiryDate) {
-      setNoUser(true);
-    } else {
       setNoUser(false);
+    } else {
+      setNoUser(true);
     }
   };
 
