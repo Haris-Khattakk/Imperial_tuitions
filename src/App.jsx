@@ -10,7 +10,8 @@ import Home from "./userProfile/home/Home";
 import Courses from "./userProfile/courses/Courses";
 import About from "./userProfile/about_us/About";
 import Messeges from "./userProfile/messeges/Messeges";
-import Contact_us from "./userProfile/contact/Contact_us";
+import Contact_us from "./userProfile/contact/Contact_us"; 
+import Feedback from "./userProfile/courses/Feedback";
 
 // Lazy load the pages/components
 const Index = React.lazy(() => import("./pages/Index"));
@@ -58,6 +59,7 @@ function App() {
             <Route path="aboutuser" element={<About />} />
             <Route path="messegesuser" element={<Messeges />} />
             <Route path="contactuser" element={<Contact_us />} />
+            <Route path="feedback" element={<Feedback />} />
           </Route>
         </Routes>
       </Suspense>

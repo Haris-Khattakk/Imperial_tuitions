@@ -1,8 +1,14 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa"; // Importing a profile icon from react-icons
 
 const Usersidebar = () => {
+  const location = useLocation(); // Get current location
+
+  // Check if the current location is the default Home route
+  const isHomeActive =
+    location.pathname === "/profile/homeuser" || location.pathname === "/";
+
   return (
     <div className="sticky left-0 top-0 w-1/5 bg-[#FFF0C7] text-black p-6 flex flex-col">
       {/* Profile Section */}
@@ -15,15 +21,12 @@ const Usersidebar = () => {
       </div>
 
       {/* Sidebar Links */}
-
-      <nav className="space-y-4  ">
+      <nav className="space-y-4">
         <NavLink
           to="/profile/homeuser"
-          className={({ isActive }) =>
-            `block py-2 px-4 rounded-lg text-lg ${
-              isActive ? "bg-[#FFF6DE]" : "hover:bg-white"
-            }`
-          }
+          className={`block py-2 px-4 rounded-lg text-lg ${
+            isHomeActive ? "bg-[#FFF6DE]" : "hover:bg-white"
+          }`}
         >
           Home
         </NavLink>
