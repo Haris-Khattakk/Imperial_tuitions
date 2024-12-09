@@ -53,11 +53,13 @@ const CoursesPage = () => {
   };
 
   const handleLevelChange = (level) => {
-    setSelectedLevels((prevLevels) => ({
-      ...prevLevels,
-      [level]: !prevLevels[level], // Toggle the selected level
-    }));
+    setSelectedLevels({
+      beginner: level === "beginner",
+      intermediate: level === "intermediate",
+      advanced: level === "advanced",
+    });
   };
+
 
   // Get courses of the selected category (if a category is selected)
   const selectedCategoryCourses =
@@ -140,7 +142,6 @@ const CoursesPage = () => {
               </ul>
             </div>
 
-            {/* Level Filter */}
             <div className="flex flex-col px-4 gap-2">
               <p className="font-poppins lg:text-[35px] md:text-[28px] text-[22px]">
                 Level
@@ -188,7 +189,7 @@ const CoursesPage = () => {
           <div className="w-full flex flex-col ">
             <div className="px-6 grid lg:grid-cols-3 gap-4 md:grid-cols-2 grid-cols-1 py-1">
               {filteredCourses.length === 0 ? (
-                <div className="w-full text-center py-10 text-xl font-bold">
+                <div className="w-full  font-urbanist text-center tracking-wider py-10 text-xl font-light">
                   No courses available for the selected level(s)
                 </div>
               ) : (

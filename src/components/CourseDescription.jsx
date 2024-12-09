@@ -224,7 +224,7 @@ function CourseDetails() {
                 .map((item, index) => (
                   <div key={index} className="flex flex-col mb-6 gap-4">
                     {/* Card design with gradient background */}
-                    <div className="bg-gradient-to-l from-[#FFF0C7] to-[#FFF6DE] p-6 rounded-lg shadow-lg">
+                    <div className="bg-gradient-to-l from-[#FFF0C7] to-[#FFF6DE] p-6 rounded-lg shadow-black shadow-2xl">
                       {/* Card content */}
                       <div className="flex flex-row text-3xl items-center gap-2 mb-4">
                         <p className=" font-bold">{index + 1}.</p>
