@@ -226,7 +226,7 @@ const Header = () => {
               />
             </p>
             {menu && (
-              <div className="bg-white shadow-lg absolute h-auto w-64 right-8 top-20 flex flex-col items-center justify-between py-6 px-4 rounded-lg border border-gray-200">
+              <div className="bg-white font-urbanist shadow-lg absolute h-auto w-64 right-8 top-20 flex flex-col items-center justify-between py-6 px-4 rounded-lg border border-gray-200">
                 {/* Profile Picture */}
                 <div className="pic bg-gray-300 w-20 h-20 rounded-full flex items-center justify-center mb-4">
                   <span className="text-gray-500 text-sm">Your Pic</span>
