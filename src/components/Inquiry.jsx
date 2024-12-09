@@ -49,7 +49,8 @@ function Inquiry() {
       // Sending data to the server
       const response = await axios.post(
         API_URLS.post_Inquiry,
-        inquiry_details
+        inquiry_details,
+        {withCredentials: true}
       );
 
       // Check if response is successful (status code 200)

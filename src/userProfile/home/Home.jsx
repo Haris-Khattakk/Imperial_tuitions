@@ -1,7 +1,10 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import API_URLS from '../../../config/Config'
+import axios from "axios";
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
+  const [userInfo, setUserInfo] = useState([]);
+
   const [formData, setFormData] = useState({
     name: "User Name",
     email: "useremail@gmail.com",
@@ -24,6 +27,22 @@ const Home = () => {
       reader.readAsDataURL(file);
     }
   };
+
+  const getDetails = async ()=>{
+    try {
+      const response = await axios.get(API_URLS.getInfo, {withCredentials: true});
+      if(response.statusText === "OK"){
+        setUserInfo(response.data[0])
+        // console.log(response.data)
+      }
+    } catch (error) {
+      
+    }
+  }
+
+  useEffect(()=>{
+    getDetails()
+  }, []);
 
   return (
     <div className="w-full font-urbanist ">
@@ -48,7 +67,7 @@ const Home = () => {
               Hello
             </p>
             <p className="text-[30px] md:text-[27px] lg:text-[29px] xl:text-[33px] font-bold font-serif text-yellow-500">
-              {formData.name}
+              {userInfo.student_name}
             </p>
           </div>
 
@@ -59,17 +78,17 @@ const Home = () => {
                 Email
               </label>
               <p className="bg-gray-100 rounded-lg shadow-md p-3 text-lg text-gray-800">
-                {formData.email}
+                {userInfo.email}
               </p>
             </div>
-            <div className="flex flex-col gap-2">
+            {/* <div className="flex flex-col gap-2">
               <label className="text-lg font-semibold text-gray-700">
                 Phone
               </label>
               <p className="bg-gray-100 rounded-lg shadow-md p-3 text-lg text-gray-800">
-                {formData.phone}
+                {userInfo.applier_phone}
               </p>
-            </div>
+            </div> */}
           </div>
 
           {/* Edit Button */}
@@ -99,7 +118,7 @@ const Home = () => {
                 <input
                   type="text"
                   name="name"
-                  value={formData.name}
+                  value={userInfo.student_name}
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border rounded-lg"
                 />
@@ -111,23 +130,23 @@ const Home = () => {
                 <input
                   type="email"
                   name="email"
-                  value={formData.email}
+                  value={userInfo.email}
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border rounded-lg"
                 />
               </div>
 
               {/* Phone */}
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label className="block mb-2">Phone</label>
                 <input
                   type="tel"
                   name="phone"
-                  value={formData.phone}
+                  value={userInfo.phone}
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border rounded-lg"
                 />
-              </div>
+              </div> */}
 
               {/* Profile Image */}
               <div className="mb-4">

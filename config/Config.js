@@ -34,6 +34,7 @@ const API_URLS = {
   // Log out API's use in Sign Up page
   LogOut: `${BASE_URL}/students/logout`,
 
-  //
+  // get user information
+  getInfo : `${BASE_URL}/students/student/profile`
 };
 export default API_URLS;
