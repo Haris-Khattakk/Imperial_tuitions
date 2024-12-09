@@ -84,7 +84,7 @@ function Inquiry() {
 
   return (
     <>
-      <div className="w-full h-full flex bg-[#FD706A] flex-col lg:flex-row lg:justify-between justify-center">
+      <div className="w-full font-urbanist h-full flex bg-[#FD706A] flex-col lg:flex-row lg:justify-between justify-center">
         {/* Left Side - Form */}
         <div className="w-full lg:w-1/2 flex justify-start bg-[url('corse_des_images/inquiryform-bg.png')] p-5">
           <div className="w-11/12 mx-auto">

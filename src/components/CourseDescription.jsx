@@ -155,13 +155,13 @@ function CourseDetails() {
                 <p className="font-semibold text-xl">Categories:</p>
                 <div>
                   {/* Dynamically render categories from course data */}
-                  <p className="text-lg">
+                  <p className="text-lg w-full">
                     {course.category_id.category_name || "Unknown Category"}
                   </p>
                 </div>
               </div>
               <p
-                className="CourseDescription"
+                className="CourseDescription "
                 dangerouslySetInnerHTML={{
                   __html: DOMPurify.sanitize(course.course_description),
                 }}
@@ -205,54 +205,57 @@ function CourseDetails() {
           {/* "What's Included" Section - Desktop */}
           <div
             style={{ backgroundImage: `url(${what_included})` }}
-            className=" bg-gray-500 flex-col 
-                    lg:px-52 md:px-26 px-10 gap-10 h-auto w-full   py-10 font-poppins hidden md:flex bg-no-repeat bg-center bg-cover"
+            className="bg-gray-500 flex-col lg:px-52 md:px-26 px-10 gap-10 h-auto w-full py-10 font-poppins hidden md:flex bg-no-repeat bg-center bg-cover"
           >
-            <div className="font-poppins md:text-[35px] text-[25px]  ">
-              {/* <p className="text-center text-5xl"> Course Content</p> */}
-              <div className="text-center flex flex-col items-center justify-center">
-                <p className="text-5xl font-poppins">Course Content</p>
-                <img
-                  src={IMAGES.contentSignature}
-                  className="w-72 h-4 mt-4 font-extrabold"
-                  alt="Course Content Line"
-                />
-              </div>
+            <div className="font-poppins text-center flex flex-col items-center justify-center mb-10">
+              <p className="text-5xl font-poppins">Course Content</p>
+              <img
+                src={IMAGES.courseSignature}
+                className="w-72 h-4 mt-4 font-extrabold"
+                alt="Course Content Line"
+              />
             </div>
 
             {/* Render "What's Included" data */}
-            <div className="flex flex-col gap-2 ">
+            <div className="flex flex-col gap-6">
               {course.course_details.course_contents
                 .filter((item) => item.enabled_flag === true)
                 .sort((a, b) => a.sort_value - b.sort_value)
                 .map((item, index) => (
-                  <div key={index} className="flex flex-col mb-5 gap-2">
-                    <div className="flex flex-row gap-1">
-                      <p className="ContentHeading">{index + 1} .</p>
-                      <p className="ContentHeading">{item.topic}</p>
+                  <div key={index} className="flex flex-col mb-6 gap-4">
+                    {/* Card design with gradient background */}
+                    <div className="bg-gradient-to-l from-[#FFF0C7] to-[#FFF6DE] p-6 rounded-lg shadow-black shadow-2xl">
+                      {/* Card content */}
+                      <div className="flex flex-row text-3xl items-center gap-2 mb-4">
+                        <p className=" font-bold">{index + 1}.</p>
+                        <p className=" font-bold tracking-widest text-black shadow-md">
+                          {item.topic}
+                        </p> 
+                      </div>
+                      <div className="font-poppins text-lg tracking-wider flex gap-3 mb-4">
+                        <p className="underline">Duration:</p>
+                        <p className="font-semibold">{item.duration} minutes</p>
+                      </div>
+                      <p
+                        className="CourseDescription px-5 text-base tracking-wider"
+                        dangerouslySetInnerHTML={{
+                          __html: DOMPurify.sanitize(item.content_description),
+                        }}
+                      ></p>
                     </div>
-                    <div className="font-poppins flex gap-2 px-6">
-                      <p className="underline text-lg ">Duration:</p>
-                      <p className="text-lg font-semibold">
-                        {item.duration} minutes
-                      </p>
-                    </div>
-                    <p
-                      className="CourseDescription px-10 "
-                      dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(item.content_description),
-                      }}
-                    ></p>
                   </div>
                 ))}
             </div>
           </div>
 
           {/* "What's Included" Section - Mobile */}
-          <div className="bg-[url('corse_des_images/what_icluded.png')] bg-gray-500 flex flex-col lg:px-52 md:px-26 px-10 gap-10 h-auto w-full justify-center items-center py-10 font-poppins md:hidden">
-            <div className="font-poppins md:text-[35px] text-[25px] text-center">
+          <div
+            style={{ backgroundImage: `url(${what_included})` }}
+            className=" flex flex-col lg:px-52 md:px-26 px-10 gap-6 h-auto w-full justify-center items-center py-10 font-poppins md:hidden"
+          >
+            <div className="font-poppins text-[22px] md:text-[35px] text-center text-black">
               <p>Course Content</p>
-              <div className="flex flex-row">
+              <div className="flex flex-row justify-center mt-4">
                 <img
                   src={IMAGES.contentSignature}
                   className="md:w-[180px] w-[130px] h-4"
@@ -260,27 +263,36 @@ function CourseDetails() {
                 />
               </div>
             </div>
+
             {course.course_details.course_contents.length > 0 ? (
               course.course_details.course_contents.map((item, index) => (
-                <details key={index} className="flex flex-col gap-2 group">
-                  <summary className="flex flex-row items-center gap-1 text-[18px] font-extralight cursor-pointer">
+                <details
+                  key={index}
+                  className="flex flex-col gap-4 group w-full"
+                >
+                  <summary className="flex flex-row items-center gap-2 text-[16px] md:text-[18px] font-light cursor-pointer text-black">
                     <p>{index + 1} .</p>
                     <p className="underline">{item.topic}</p>
-                    <span className="ml-auto transform transition-transform duration-200 group-open:rotate-180">
+                    <span className="ml-auto transform transition-transform duration-200 group-open:rotate-180 text-black">
                       ⌄
                     </span>
                   </summary>
-                  <div className="font-poppins flex gap-2">
+
+                  <div className="font-poppins text-[14px] md:text-[16px] text-black">
                     <p className="underline">Duration:</p>
                     <p>{item.duration} minutes</p>
                   </div>
-                  <p className="font-urbanist hidden group-open:block">
-                    {item.content_description}
-                  </p>
+
+                  <p
+                    className="font-urbanist hidden group-open:block text-black text-[14px] md:text-[16px]"
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(item.content_description),
+                    }}
+                  ></p>
                 </details>
               ))
             ) : (
-              <p>No contents available.</p>
+              <p className="text-white">No contents available.</p>
             )}
           </div>
 

@@ -4,11 +4,11 @@ import IMAGES from "../../../public/ImagesConfig";
 const Contact = () => {
   return (
     <>
-      <div className="flex flex-col md:flex-row w-full h-auto gap-10 bg-red-500 bg-bodyColor py-10 px-5 md:px-32">
+      <div className="flex flex-col font-urbanist md:flex-row w-full h-auto gap-10 bg-red-500 bg-bodyColor py-10 px-5 md:px-32">
         {/* Left Section */}
         <div className="flex flex-col justify-start gap-5 w-full md:w-1/2">
           <div>
-            <p className="sectionHeader text-center md:text-left ">Contact Us</p>
+            <p className="sectionHeader  text-center md:text-left ">Contact Us</p>
             <img
               src={IMAGES.contactSignature}
               className="w-48 h-6 md:w-60 md:h-8 my-4 mx-auto md:mx-0"

@@ -5,6 +5,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import API_URLS from "../../config/Config";
 import IMAGES from "../../public/ImagesConfig";
 import DOMPurify from "dompurify";
+import Loader from "../pages/Loader/Loader";
 
 function Enrollment() {
   const [name, setName] = useState("");
@@ -123,48 +124,21 @@ function Enrollment() {
   };
 
   useEffect(() => {
+    if (location.state?.loggedIn) {
+      setNoUser(false); // Hide modal if coming back from login
+    }
+  }, [location.state]);
+
+  useEffect(() => {
     checkSession();
   }, []);
 
+
   return (
-    <div className="w-full h-auto">
-      <div className="flex w-full xl:flex-row-reverse flex-col">
-        {/* Contact us section */}
-        <div
-          className="flex md:w-1/2 w-full flex-col gap-2 font-urbanist font-readex xl:px-16 2xl:px-20 md:px-12
-        lg:px-14 px-10 md:py-8 lg:py-10 py-7 xl:py-12 2xl:py-14"
-        >
-          <div className="flex justify-start">
-            <div className="text-[35px] md:text-[25px] tracking-wider font-bold lg:text-[65px]">
-              <p>{course.course_name}</p>
-            </div>
-          </div>
-          <div className="lg:text-[30px] font-urbanist md:text-[25px] text-[25px] font-semibold">
-            <p>{course.price}$/ hour</p>
-          </div>
-
-          <div className="flex justify-start">
-            <p className="text-base">
-              <span
-                className="lg:text-[22px] md:text-[20px] text-[25px] font-readex"
-                dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(course.course_description),
-                }}
-              ></span>
-            </p>
-          </div>
-
-          <div className="flex justify-center items-center">
-            <img
-              src={IMAGES.enrollmentIcon}
-              alt="Enrollment"
-              className="w-10/12 mx-auto"
-            />
-          </div>
-        </div>
-
+    <div className="w-full h-auto ">
+      <div className="flex w-full  flex-col md:flex-row ">
         {/* Enrollment form */}
-        <div className="bg-[#FD706A] font-urbanist md:w-1/2 w-full xl:px-16 2xl:px-20 md:px-12 lg:px-14 px-10 md:py-8 lg:py-10 py-7 xl:py-12 2xl:py-14 font-readex">
+        <div className="bg-[#FD706A]  font-urbanist md:w-1/2 w-full xl:px-16 2xl:px-20 md:px-12 lg:px-14 px-10 md:py-8 lg:py-10 py-7 xl:py-12 2xl:py-14 font-readex">
           <div className="flex flex-col gap-5 justify-start">
             <div>
               <div className="2xl:text-[90px] xl:text-[80px] lg:text-[70px] md:text-[60px] text-[50px] font-extrabold text-white">
@@ -313,6 +287,40 @@ function Enrollment() {
               {errorMessage}
             </div>
           )}
+        </div>
+
+        {/* Contact us section */}
+        <div
+          className="flex md:w-1/2 w-full flex-col gap-2 font-urbanist font-readex xl:px-16 2xl:px-20 md:px-12
+        lg:px-14 px-10 md:py-8 lg:py-10 py-7 xl:py-12 2xl:py-14"
+        >
+          <div className="flex justify-start">
+            <div className="text-[35px] md:text-[25px] tracking-wider font-bold lg:text-[65px]">
+              <p>{course.course_name}</p>
+            </div>
+          </div>
+          <div className="lg:text-[30px] font-urbanist md:text-[25px] text-[25px] font-semibold">
+            <p>{course.price}$/ hour</p>
+          </div>
+
+          <div className="flex justify-start">
+            <p className="text-base">
+              <span
+                className="lg:text-[22px] md:text-[20px] text-[25px] font-readex"
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(course.course_description),
+                }}
+              ></span>
+            </p>
+          </div>
+
+          <div className="flex justify-center items-center">
+            <img
+              src={IMAGES.enrollmentIcon}
+              alt="Enrollment"
+              className="w-10/12 mx-auto"
+            />
+          </div>
         </div>
       </div>
       {!noUser && (

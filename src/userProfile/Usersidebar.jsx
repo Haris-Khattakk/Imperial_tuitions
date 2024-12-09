@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa"; // Importing a profile icon from react-icons
 import axios from "axios";
@@ -26,7 +26,7 @@ const Usersidebar = () => {
 
 
   return (
-    <div className="sticky left-0 top-0 w-1/5 bg-[#FFF0C7] text-black p-6 flex flex-col">
+    <div className="sticky left-0 font-urbanist top-0 w-1/5 bg-[#FFF0C7] text-black p-6 flex flex-col">
       {/* Profile Section */}
       <div className="flex items-center mb-6">
         <FaUserCircle size={40} className="text-gray-400 mr-4" />
@@ -37,8 +37,7 @@ const Usersidebar = () => {
       </div>
 
       {/* Sidebar Links */}
-
-      <nav className="space-y-4  ">
+      <nav className="space-y-4">
         <NavLink
           to="/profile/homeuser"
           className={({ isActive }) =>
@@ -46,6 +45,7 @@ const Usersidebar = () => {
               isActive ? "bg-[#FFF6DE]" : "hover:bg-white"
             }`
           }
+          end
         >
           Home
         </NavLink>
