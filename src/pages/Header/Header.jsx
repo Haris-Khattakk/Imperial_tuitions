@@ -179,7 +179,7 @@ const Header = () => {
           to="/courses"
           className={({ isActive }) =>
             `p-1 text-xl duration-500 ${
-              isActive ? "text-red-500" : "hover:text-red-500"
+              isActive ? "text-red-500" : "hover:text-red-400"
             }`
           }
         >
@@ -189,7 +189,7 @@ const Header = () => {
           to="/about"
           className={({ isActive }) =>
             `p-1 text-xl duration-500 ${
-              isActive ? "text-red-500" : "hover:text-red-500"
+              isActive ? "text-red-500" : "hover:text-red-400"
             }`
           }
         >
@@ -199,7 +199,7 @@ const Header = () => {
           to="/inquiry"
           className={({ isActive }) =>
             `p-1 text-xl duration-500 ${
-              isActive ? "text-red-500" : "hover:text-red-500"
+              isActive ? "text-red-500" : "hover:text-red-400"
             }`
           }
         >
@@ -211,7 +211,7 @@ const Header = () => {
               to="/signin"
               className={({ isActive }) =>
                 `p-1 text-xl duration-500 ${
-                  isActive ? "text-red-500" : "hover:text-red-500"
+                  isActive ? "text-red-500" : "hover:text-red-400"
                 }`
               }
             >
