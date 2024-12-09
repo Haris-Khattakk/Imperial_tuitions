@@ -230,7 +230,7 @@ function CourseDetails() {
                         <p className=" font-bold">{index + 1}.</p>
                         <p className=" font-bold tracking-widest text-black shadow-md">
                           {item.topic}
-                        </p>
+                        </p> 
                       </div>
                       <div className="font-poppins text-lg tracking-wider flex gap-3 mb-4">
                         <p className="underline">Duration:</p>
