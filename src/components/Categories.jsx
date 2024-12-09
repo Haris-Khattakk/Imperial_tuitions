@@ -117,13 +117,13 @@ function Categories() {
                 />
                 <div className="px-3 flex flex-col h-full">
                   {/* Category Name */}
-                  <h2 className="text-xl font-semibold py-3">
+                  <h2 className="text-xl font-poppins font-semibold py-3">
                     {category.category_name}
                   </h2>
 
                   {/* Category Description */}
                   <div
-                    className="text-gray-600 text-base flex-grow"
+                    className="text-gray-600 font-urbanist text-base flex-grow"
                     dangerouslySetInnerHTML={{
                       __html: DOMPurify.sanitize(
                         category.category_description
@@ -138,7 +138,7 @@ function Categories() {
                   ></div>
 
                   {/* Button */}
-                  <div className="mt-auto self-center mb-16">
+                  <div className="mt-auto font-urbanist self-center mb-16">
                     <button className="bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800">
                       View Now
                     </button>

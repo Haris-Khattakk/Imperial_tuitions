@@ -226,9 +226,9 @@ function CourseDetails() {
                     {/* Card design with gradient background */}
                     <div className="bg-gradient-to-l from-[#FFF0C7] to-[#FFF6DE] p-6 rounded-lg shadow-lg">
                       {/* Card content */}
-                      <div className="flex flex-row items-center gap-2 mb-4">
-                        <p className="text-xl font-bold">{index + 1}.</p>
-                        <p className="text-3xl font-bold tracking-widest text-black shadow-md">
+                      <div className="flex flex-row text-3xl items-center gap-2 mb-4">
+                        <p className=" font-bold">{index + 1}.</p>
+                        <p className=" font-bold tracking-widest text-black shadow-md">
                           {item.topic}
                         </p>
                       </div>
@@ -246,7 +246,7 @@ function CourseDetails() {
                   </div>
                 ))}
             </div>
-          </div> 
+          </div>
 
           {/* "What's Included" Section - Mobile */}
           <div
