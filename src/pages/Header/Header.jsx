@@ -177,35 +177,45 @@ const Header = () => {
       <div className="hidden md:flex md:flex-row md:gap-4 mt-4 items-center">
         <NavLink
           to="/courses"
-          className="hover:text-[#427E41] duration-500 p-1 text-xl"
-          onClick={() => setMobileMenuOpen(false)}
+          className={({ isActive }) =>
+            `p-1 text-xl duration-500 ${
+              isActive ? "text-red-500" : "hover:text-red-500"
+            }`
+          }
         >
           Courses
         </NavLink>
         <NavLink
           to="/about"
-          className="hover:text-[#427E41] duration-500 p-1 text-xl"
-          onClick={() => setMobileMenuOpen(false)}
+          className={({ isActive }) =>
+            `p-1 text-xl duration-500 ${
+              isActive ? "text-red-500" : "hover:text-red-500"
+            }`
+          }
         >
           About
         </NavLink>
         <NavLink
           to="/inquiry"
-          className="hover:text-[#427E41] duration-500 p-1 text-xl"
-          onClick={() => setMobileMenuOpen(false)}
+          className={({ isActive }) =>
+            `p-1 text-xl duration-500 ${
+              isActive ? "text-red-500" : "hover:text-red-500"
+            }`
+          }
         >
           Inquiry
         </NavLink>
-
         {!btns ? (
           <>
             <NavLink
               to="/signin"
-              className="hover:text-[#427E41] duration-500 p-1 text-xl"
-              onClick={() => setMobileMenuOpen(false)}
-              state={{ from: "/signin" }}
+              className={({ isActive }) =>
+                `p-1 text-xl duration-500 ${
+                  isActive ? "text-red-500" : "hover:text-red-500"
+                }`
+              }
             >
-              Sign in
+              Sign In
             </NavLink>
             <NavLink
               to="/signup"
@@ -241,8 +251,8 @@ const Header = () => {
                 </div>
 
                 {/* Buttons */}
-                  <NavLink
-                    onClick={handleView}
+                <NavLink
+                  onClick={handleView}
                   to="/profile"
                   className="w-full text-center hover:bg-gray-100 text-gray-700 border border-gray-300 py-2 rounded-md mb-2 transition duration-300"
                 >
